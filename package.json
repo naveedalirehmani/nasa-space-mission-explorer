@@ -1,0 +1,24 @@
+{
+  "name": "project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server-test":"cd server && npm run test",
+    "server": "cd server && npm run dev",
+    "client": "npm rn start --prefix client",
+    "watch": "npm run server & npm run client",
+    "install-client": "npm install --prefix client",
+    "install-server": "npm install --prefix server",
+    "deploy": "npm run build --prefix client && npm run server",
+    "deploy-cluster": "npm run build --prefix client && npm run cluster --prefix server",
+    "install": "npm run install-client && npm run install-server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
+}
