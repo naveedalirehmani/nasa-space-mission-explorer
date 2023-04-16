@@ -31,14 +31,14 @@ describe('lanches API', () => {
       mission: "Kepler Exploration Y",
       rocket: "Kepler IS2",
       launchDate: "January 7, 2030",
-      target: "Kepler-452 b",
+      target: "Kepler-442 b",
     };
 
     const launchDataWithDate = {
       mission: "Kepler Exploration Y",
       rocket: "Kepler IS2",
       // launchDate: "January 7, 2030",
-      target: "Kepler-452 b",
+      target: "Kepler-442 b",
     };
 
     test("launch date creation 201 pass", async () => {
