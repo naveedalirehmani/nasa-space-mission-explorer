@@ -29,7 +29,7 @@ async function loadLunchesData() {
 
   const spaceXDataExist = await findLaunch({
     flightNumber: 1,
-    rocker: "Falcon 1",
+    rocket: "Falcon 1",
     mission: "FalconSat",
   });
 

@@ -1,11 +1,12 @@
 const request = require("supertest");
 const app = require("../../app");
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo');
-
+const {getPlanetsData} = require('../../models/planets/planets.model')
 describe('lanches API', () => {
 
   beforeAll(async () => {
     await mongoConnect()
+    await getPlanetsData()
   })
 
   afterAll(async () => {
