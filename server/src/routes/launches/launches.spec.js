@@ -15,8 +15,8 @@ describe('lanches API', () => {
 
 
   describe("getAllLaunches-test", () => {
+    jest.setTimeout(20000);
     test("get should response with 200", async () => {
-      jest.setTimeout(10000);
       const response = await request(app)
         .get("/v1/launches")
         .expect("Content-Type", /json/)

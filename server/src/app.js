@@ -1,6 +1,5 @@
 const cors = require("cors");
 const path = require("path");
-const helmet = require('helmet')
 const morgan = require("morgan");
 const express = require("express");
 
@@ -13,11 +12,15 @@ app.use(
     origin: "http://localhost:3000",
   })
 );
-app.use(helmet());
+// app.use(helmet());
 app.use(express.json());
 app.use(morgan("combined"));
-app.use("/files", express.static(path.join(__dirname, "files")));
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.use("/v1", Api1);
+
+app.get("/*", (request, response) => {
+  response.sendFile(path.join(__dirname, "..", "public", "index.html"));
+});
 
 module.exports = app;
