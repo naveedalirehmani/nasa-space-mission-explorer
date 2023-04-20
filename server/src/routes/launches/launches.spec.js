@@ -1,51 +1,51 @@
-const request = require("supertest");
-const app = require("../../app");
+const request = require('supertest');
+const app = require('../../app');
 const { mongoConnect, mongoDisconnect } = require('../../services/mongo');
-const {getPlanetsData} = require('../../models/planets/planets.model')
+const {getPlanetsData} = require('../../models/planets/planets.model');
 describe('lanches API', () => {
 
   beforeAll(async () => {
-    await mongoConnect()
-    await getPlanetsData()
-  })
+    await mongoConnect();
+    await getPlanetsData();
+  });
 
   afterAll(async () => {
-    await mongoDisconnect()
-  })
+    await mongoDisconnect();
+  });
 
 
-  describe("getAllLaunches-test", () => {
+  describe('getAllLaunches-test', () => {
     jest.setTimeout(20000);
-    test("get should response with 200", async () => {
+    test('get should response with 200', async () => {
       const response = await request(app)
-        .get("/v1/launches")
-        .expect("Content-Type", /json/)
+        .get('/v1/launches')
+        .expect('Content-Type', /json/)
         .expect(200);
       // expect(response.statusCode).toBe(200)
     });
   });
 
-  describe("addNewLaunch-test", () => {
+  describe('addNewLaunch-test', () => {
 
     const completeLaunchData = {
-      mission: "Kepler Exploration Y",
-      rocket: "Kepler IS2",
-      launchDate: "January 7, 2030",
-      target: "Kepler-442 b",
+      mission: 'Kepler Exploration Y',
+      rocket: 'Kepler IS2',
+      launchDate: 'January 7, 2030',
+      target: 'Kepler-442 b',
     };
 
     const launchDataWithDate = {
-      mission: "Kepler Exploration Y",
-      rocket: "Kepler IS2",
+      mission: 'Kepler Exploration Y',
+      rocket: 'Kepler IS2',
       // launchDate: "January 7, 2030",
-      target: "Kepler-442 b",
+      target: 'Kepler-442 b',
     };
 
-    test("launch date creation 201 pass", async () => {
+    test('launch date creation 201 pass', async () => {
       const response = await request(app)
-        .post("/v1/launches")
+        .post('/v1/launches')
         .send(completeLaunchData)
-        .expect("Content-Type", /json/)
+        .expect('Content-Type', /json/)
         .expect(201);
 
       const requestDate = new Date(completeLaunchData.launchDate).valueOf();
@@ -56,33 +56,33 @@ describe('lanches API', () => {
       expect(response.body).toMatchObject(launchDataWithDate);
     });
 
-    test("launch data with missing field", async () => {
+    test('launch data with missing field', async () => {
 
       const response = await request(app)
-        .post("/v1/launches")
+        .post('/v1/launches')
         .send(launchDataWithDate)
         .expect(400)
-        .expect("Content-Type", /json/);
+        .expect('Content-Type', /json/);
 
-      expect(response.body).toStrictEqual({ error: "missing launch field" });
+      expect(response.body).toStrictEqual({ error: 'missing launch field' });
 
     });
 
-    test("launch data with invalid date", async () => {
+    test('launch data with invalid date', async () => {
 
       const response = await request(app)
-        .post("/v1/launches")
+        .post('/v1/launches')
         .send({
-          mission: "Kepler Exploration Y",
-          rocket: "Kepler IS2",
-          launchDate: "invalid date",
-          target: "Kepler-442 b2",
+          mission: 'Kepler Exploration Y',
+          rocket: 'Kepler IS2',
+          launchDate: 'invalid date',
+          target: 'Kepler-442 b2',
         })
         .expect(400)
-        .expect("Content-Type", /json/);
+        .expect('Content-Type', /json/);
 
     });
   });
 
-})
+});
 

@@ -1,9 +1,9 @@
-const launchesModel = require("../../models/launches/launches.model");
+const launchesModel = require('../../models/launches/launches.model');
 const getPagination = require('../../services/query.js');
 
 async function httpGetAllLaunches(request, response) {
 
-  const {skip,limit} = getPagination(request.query)
+  const {skip,limit} = getPagination(request.query);
   
   const launches = await launchesModel.getAllLaunches({skip,limit});
   return response.status(200).json(launches);
@@ -18,14 +18,14 @@ async function httpAddNewLaunch(request, response) {
     !launch.rocket ||
     !launch.target
   ) {
-    return response.status(400).json({ error: "missing launch field" });
+    return response.status(400).json({ error: 'missing launch field' });
   }
 
   launch.launchDate = new Date(launch.launchDate);
 
-  if (launch.launchDate.toString() === "Invalid Date") {
+  if (launch.launchDate.toString() === 'Invalid Date') {
     return response.status(400).json({
-      error: "invalid date format",
+      error: 'invalid date format',
     });
   }
 
@@ -42,7 +42,7 @@ async function httpAbortLaunch(request, response) {
   if (!launch) {
     return response
       .status(404)
-      .json({ error: "launch with id does not exits" });
+      .json({ error: 'launch with id does not exits' });
   }
 
   const abortedLaunch = await launchesModel.abortMissionById(id);
@@ -50,7 +50,7 @@ async function httpAbortLaunch(request, response) {
   if(!abortedLaunch){
     response.status(400).json({
       error:'Launch not aborted'
-    })
+    });
   }
   
   return response.status(200).json(abortedLaunch);

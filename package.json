@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "npm test --prefix server && npm test --prefix client",
-    "server-test":"cd server && npm run test",
+    "server-test": "cd server && npm run test",
     "server": "cd server && npm run dev",
     "client": "npm rn start --prefix client",
     "watch": "npm run server & npm run client",
@@ -17,5 +17,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "eslint": "^8.38.0"
+  }
 }

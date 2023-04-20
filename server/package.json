@@ -11,7 +11,9 @@
     "test-watch": "jest --watchAll",
     "start": "node src/server.js",
     "cluster": "pm2 start src/server.js -i max",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "lint": "eslint .",
+    "lint:fix": "eslint --fix ."
   },
   "keywords": [],
   "author": "",

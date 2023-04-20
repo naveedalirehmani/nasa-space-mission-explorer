@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
 const planetsSchema = new mongoose.Schema({
   keplerName: {
@@ -7,4 +7,4 @@ const planetsSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("planet", planetsSchema );
+module.exports = mongoose.model('planet', planetsSchema );
