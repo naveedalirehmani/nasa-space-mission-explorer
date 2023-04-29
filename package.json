@@ -17,8 +17,5 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "eslint": "^8.38.0"
-  }
+  "license": "ISC"
 }
