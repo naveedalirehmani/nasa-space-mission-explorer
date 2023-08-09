@@ -16,9 +16,9 @@ async function startServer() {
   await mongoConnect();
   await getPlanetsData();
   await loadLunchesData();
-  
+
   console.log('\x1b[35m', 'Planets Data Populated');
-  server.listen(PORT, () => {
+  server.listen(PORT, () => { 
     console.log(' server is listning on ', PORT);
   });
 }

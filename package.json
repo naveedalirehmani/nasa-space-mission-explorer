@@ -7,7 +7,7 @@
     "test": "npm test --prefix server && npm test --prefix client",
     "server-test": "cd server && npm run test",
     "server": "cd server && npm run dev",
-    "client": "npm rn start --prefix client",
+    "client": "npm run start --prefix client",
     "watch": "npm run server & npm run client",
     "install-client": "npm install --prefix client",
     "install-server": "npm install --prefix server",
@@ -17,5 +17,8 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "server": "^1.0.38"
+  }
 }
